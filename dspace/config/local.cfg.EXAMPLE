@@ -303,15 +303,30 @@ google.analytics.buffer = 256
 google.analytics.cron = 0 0/5 * * * ?
 google.analytics.api-secret =
 
-##############################
-# SOLR SUGGEST CONFIGURATION #
-##############################
+##################################################
+# ORCID AUTHORITY AND SOLR SUGGEST CONFIGURATION #
+###################################################
 # Override settings in dspace/config/modules/authority.cfg
 
 # Enable choice authority plugins for Solr autosuggest
 plugin.named.org.dspace.content.authority.ChoiceAuthority = \
+  org.dspace.content.authority.SolrAuthority = SolrAuthorAuthority, \
   edu.umd.lib.dspace.content.authority.SuggestChoiceAuthority = SolrFormatAuthority, \
   edu.umd.lib.dspace.content.authority.SuggestChoiceAuthority = SolrSubjectAuthority
+
+  # Configuration settings for ORCID based authority control.
+choices.plugin.dc.contributor.author = SolrAuthorAuthority
+choices.presentation.dc.contributor.author = authorLookup
+authority.controlled.dc.contributor.author = true
+authority.author.indexer.field.1=dc.contributor.author
+
+# Override settings in dspace/config/modules/orcid.cfg
+orcid.domain-url= https://sandbox.orcid.org
+orcid.api-url = https://pub.sandbox.orcid.org/v3.0
+
+# Note: ORCID client id/secret do not seem to be necessary for ORCID public sandbox
+# orcid.application-client-id =
+# orcid.application-client-secret =
 
 # Configuration settings for Solr autosuggest
 solr.suggest.server=${solr.server}/${solr.multicorePrefix}search
