@@ -10,6 +10,7 @@ the stock DSpace code for MD-SOAR.
 Major customizations have their own documents:
 
 * [DataCiteDOI.md](./DataCiteDOI.md)
+* [OrcidIntegration.md](./OrcidIntegration.md)
 * [SimpleItemPage.md](./SimpleItemPage.md)
 * [SolrAutosuggest.md](./SolrAutosuggest.md)
 * [SubmissionForm.md](./SubmissionForm.md)

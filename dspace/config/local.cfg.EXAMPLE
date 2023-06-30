@@ -305,16 +305,16 @@ google.analytics.api-secret =
 
 ##################################################
 # ORCID AUTHORITY AND SOLR SUGGEST CONFIGURATION #
-###################################################
+##################################################
 # Override settings in dspace/config/modules/authority.cfg
 
-# Enable choice authority plugins for Solr autosuggest
+# Enable ORCID authority control and Solr autosuggest choice authority plugins
 plugin.named.org.dspace.content.authority.ChoiceAuthority = \
   org.dspace.content.authority.SolrAuthority = SolrAuthorAuthority, \
   edu.umd.lib.dspace.content.authority.SuggestChoiceAuthority = SolrFormatAuthority, \
   edu.umd.lib.dspace.content.authority.SuggestChoiceAuthority = SolrSubjectAuthority
 
-  # Configuration settings for ORCID based authority control.
+# Configuration settings for ORCID based authority control.
 choices.plugin.dc.contributor.author = SolrAuthorAuthority
 choices.presentation.dc.contributor.author = authorLookup
 authority.controlled.dc.contributor.author = true
