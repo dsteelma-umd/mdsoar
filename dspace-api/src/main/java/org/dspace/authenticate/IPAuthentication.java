@@ -168,10 +168,12 @@ public class IPAuthentication implements AuthenticationMethod {
 
         // Get the user's IP address
         String addr = clientInfoService.getClientIp(request);
+        log.warn("----IPAuthentication::Client IP address='"+addr+"'");
 
         for (IPMatcher ipm : ipMatchers) {
             try {
                 if (ipm.match(addr)) {
+                  log.warn("----IPAuthentication::match found for'"+addr+"'");
                     // Do we know group ID?
                     UUID g = ipMatcherGroupIDs.get(ipm);
                     if (g != null) {
@@ -179,7 +181,7 @@ public class IPAuthentication implements AuthenticationMethod {
                     } else {
                         // See if we have a group name
                         String groupName = ipMatcherGroupNames.get(ipm);
-
+                        log.warn("----IPAuthentication::match found for group'"+groupName+"'");
                         if (groupName != null) {
                             Group group = groupService.findByName(context, groupName);
                             if (group != null) {
